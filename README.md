@@ -1,5 +1,12 @@
 # Fall 2024 SWE 3643 Testing and QA Project
-## Kade Fleming
-
--I am starting on this much later than I should have, but I've been busy (This is also a Test)
--One more test
+##Introduction
+##Table of Contents
+##Team Members
+-Kade Fleming
+##Architecture
+##Environment
+##Executing the Web Application
+##Executing Unit Tests
+##Reviewing Unit Test Coverage
+##Executing End-To-End Tests
+##Final Video Presentation
