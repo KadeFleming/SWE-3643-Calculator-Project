@@ -1,7 +1,43 @@
-﻿@page "/"
+﻿@page "/Home"
 
-<PageTitle>Home</PageTitle>
+<h3>Statistical Calculator</h3>
 
-<h1>Hello, world!</h1>
+<div>
+    <form method="post" action="/Home/Calculate" onsubmit="return submitForm(this)">
+        <label for="numbers">Enter numbers (comma-separated):</label>
+        <input id="numbers" name="inputNumbers" />
 
-Welcome to your new app.
+        <label for="operation">Choose operation:</label>
+        <select id="operation" name="operation">
+            <option value="mean">Mean</option>
+            <option value="sampleStdDev">Sample Standard Deviation</option>
+            <option value="populationStdDev">Population Standard Deviation</option>
+        </select>
+
+        <button type="submit">Calculate</button>
+    </form>
+</div>
+
+<div id="result">
+    <!-- Result will be displayed here -->
+</div>
+
+<script>
+        async function submitForm(form) {
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: form.method,
+                body: formData,
+            });
+
+            const data = await response.json();
+            const resultDiv = document.getElementById('result');
+            if (data.Success) {
+                resultDiv.innerHTML = `<p>Result: ${data.Result.toFixed(2)}</p>`;
+            } else {
+                resultDiv.innerHTML = `<p style="color: red;">Error: ${data.Error}</p>`;
+            }
+            return false; // Prevent default form submission
+        }
+    </script>
+}
